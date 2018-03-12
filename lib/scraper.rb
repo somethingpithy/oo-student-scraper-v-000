@@ -4,9 +4,9 @@ require 'pry'
 class Scraper
 
   def self.scrape_index_page(index_page)
-    index = Nokogiri::HTML(open("index_page"))
+    index_page = Nokogiri::HTML(open(index_url))
     students = []
-    index.css("div.roster-cards-container").each { |card|
+    index_page.css("div.roster-cards-container").each { |card|
       card.css(".student-card a").each { |student|
         student_name = student.css('.student-name').text
         student_location = student.css('.student-location').text
