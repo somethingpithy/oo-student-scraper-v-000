@@ -21,6 +21,7 @@ class Scraper
     student = {}
     profile = Nokogiri::HTML(open("profile_url"))
     links = profile.css("div.main-wrapper.profile")
+    binding.pry
     links.each do { |link|
       if link.include?("twitter")
         student[:twitter] = link
