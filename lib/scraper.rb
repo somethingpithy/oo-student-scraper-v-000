@@ -3,8 +3,8 @@ require 'pry'
 
 class Scraper
 
-  def self.scrape_index_page(index_url)
-    index = Nokogiri::HTML(open("index_url"))
+  def self.scrape_index_page(index_page)
+    index = Nokogiri::HTML(open("index_page"))
     students = []
     index.css("div.roster-cards-container").each { |card|
       card.css(".student-card a").each { |student|
@@ -17,9 +17,9 @@ class Scraper
     students
   end
 
-  def self.scrape_profile_page(profile_url)
+  def self.scrape_profile_page(profile_page)
     student = {}
-    profile = Nokogiri::HTML(open("profile_url"))
+    profile = Nokogiri::HTML(open("profile_page"))
     links = profile.css("div.social-icon-container").children.css("a").map { |icon| icon.attribute('href').value }
     links.each { |link|
       if link.include?("twitter")
