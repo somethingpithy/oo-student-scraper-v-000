@@ -5,7 +5,6 @@ class Student
   @@all = []
 
   def initialize(student_hash)
-    # takes in an argument of a hash ans sets the new student's attributes using the key/value pairs
     student_hash.each{ |key, value| self.send("#{key}=", value) }
     @@all << self
   end
