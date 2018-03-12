@@ -20,7 +20,7 @@ class Scraper
   def self.scrape_profile_page(profile_url)
     student = {}
     profile = Nokogiri::HTML(open("profile_url"))
-    links = profile.css("div.main-wrapper.profile") 
+    links = profile.css("div.main-wrapper.profile")
     links.each do { |link|
       if link.include?("twitter")
         student[:twitter] = link
@@ -34,9 +34,6 @@ class Scraper
     }
     student[:profile_quote] = profile.css(".profile-quote").text
     student[:bio] = profile.css("div.bio-content.content-holder div.description-holder p").text
-      
-    # scrapes students's profile page and returns a hash of attributes describing an individual student.
-    # Attributes to scrape include :twitter, :linkedin, :github, :blog, :profile_quote, and :bio
   end
 
 end
