@@ -3,7 +3,7 @@ require 'pry'
 
 class Scraper
 
-  def self.scrape_index_page(index_page)
+  def self.scrape_index_page(index_url)
     index_page = Nokogiri::HTML(open(index_url))
     students = []
     index_page.css("div.roster-cards-container").each { |card|
